@@ -13,11 +13,13 @@
 const mongoose = require("mongoose");
 const app = require("./app");
 
-const { DB_HOST, PORT = 5000 } = process.env;
+const { PORT = 5000 } = process.env;
 
 async function startServer() {
   try {
-    await mongoose.connect(DB_HOST);
+    await mongoose.connect(
+      "mongodb+srv://delivery:02504908@cluster0.r1ua7dw.mongodb.net/db-delivery?retryWrites=true&w=majority"
+    );
     app.listen(PORT, () => {
       console.log(`Server is listening on port ${PORT}`);
     });
